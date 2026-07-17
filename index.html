@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusMart – Form & Media (Buoi 2)</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    header {
+      background: #0b5ed7;
+      color: #fff;
+      padding: 24px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav {
+      background: #083b8a;
+      padding: 12px 20px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 16px;
+      font-weight: 700;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      text-decoration: underline;
+    }
+
+    main {
+      width: min(1100px, 92%);
+      margin: 24px auto;
+    }
+
+    section {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 24px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #0b5ed7;
+    }
+
+    .category-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .category-item {
+      padding: 10px 16px;
+      background: #e7f0ff;
+      border: 1px solid #b8d1ff;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 850px;
+      border-collapse: collapse;
+    }
+
+    caption {
+      caption-side: top;
+      padding-bottom: 14px;
+      color: #0b5ed7;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    th,
+    td {
+      border: 1px solid #cfd6df;
+      padding: 10px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: #e9eef5;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    figure {
+      margin: 0;
+      text-align: center;
+    }
+
+    figure img {
+      display: block;
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      margin: 0 auto 6px;
+      border-radius: 6px;
+    }
+
+    figcaption {
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .inventory-box {
+      margin-top: 16px;
+      padding: 14px;
+      background: #fff5d6;
+      border-left: 5px solid #f0ad00;
+      font-weight: 700;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    fieldset {
+      border: 1px solid #b8c2cc;
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    legend {
+      padding: 0 8px;
+      color: #0b5ed7;
+      font-weight: 700;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+      width: 100%;
+      font: inherit;
+    }
+
+    input,
+    select,
+    textarea {
+      padding: 10px;
+      border: 1px solid #9aa5b1;
+      border-radius: 6px;
+      background: #fff;
+      color: #111;
+    }
+
+    button {
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 6px;
+      background: #0b5ed7;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover,
+    button:focus {
+      background: #084cae;
+    }
+
+    footer {
+      background: #1f2937;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer a {
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <header data-testid="cm-brand">
+    <h1>CampusMart</h1>
+  </header>
+
+  <nav data-testid="cm-nav" aria-label="Dieu huong chinh">
+    <a href="#home">Trang chu</a>
+    <a href="#products">San pham</a>
+    <a href="#about">Gioi thieu</a>
+  </nav>
+
+  <main id="home">
+    <section id="categories" data-testid="cm-category-list">
+      <h2>Danh muc san pham</h2>
+
+      <div class="category-list">
+        <div class="category-item">Ban phim</div>
+        <div class="category-item">Chuot</div>
+        <div class="category-item">Man hinh</div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="table-wrapper">
+        <table data-testid="cm-product-table">
+          <caption>Danh sach san pham CORE</caption>
+
+          <thead>
+            <tr>
+              <th>Anh</th>
+              <th>SKU</th>
+              <th>Ten</th>
+              <th>Danh muc</th>
+              <th>Gia</th>
+              <th>So luong</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr data-testid="cm-product-row" data-sku="KB-01">
+              <td>
+                <figure>
+                  <img src="https://placehold.co/120x80?text=Keychron+K2"
+                       alt="Ban phim Keychron K2"
+                       width="120"
+                       height="80">
+                  <figcaption>KB-01</figcaption>
+                </figure>
+              </td>
+              <td>KB-01</td>
+              <td>Keychron K2</td>
+              <td>Ban phim</td>
+              <td>1890000</td>
+              <td>3</td>
+            </tr>
+
+            <tr data-testid="cm-product-row" data-sku="KB-02">
+              <td>
+                <figure>
+                  <img src="https://placehold.co/120x80?text=Akko+3087"
+                       alt="Ban phim Akko 3087"
+                       width="120"
+                       height="80">
+                  <figcaption>KB-02</figcaption>
+                </figure>
+              </td>
+              <td>KB-02</td>
+              <td>Akko 3087</td>
+              <td>Ban phim</td>
+              <td>1290000</td>
+              <td>5</td>
+            </tr>
+
+            <tr data-testid="cm-product-row" data-sku="KB-03">
+              <td>
+                <figure>
+                  <img src="https://placehold.co/120x80?text=Leopold+FC660M"
+                       alt="Ban phim Leopold FC660M"
+                       width="120"
+                       height="80">
+                  <figcaption>KB-03</figcaption>
+                </figure>
+              </td>
+              <td>KB-03</td>
+              <td>Leopold FC660M</td>
+              <td>Ban phim</td>
+              <td>2750000</td>
+              <td>2</td>
+            </tr>
+
+            <tr data-testid="cm-product-row" data-sku="MS-01">
+              <td>
+                <figure>
+                  <img src="https://placehold.co/120x80?text=Logitech+M331"
+                       alt="Chuot Logitech M331"
+                       width="120"
+                       height="80">
+                  <figcaption>MS-01</figcaption>
+                </figure>
+              </td>
+              <td>MS-01</td>
+              <td>Logitech M331</td>
+              <td>Chuot</td>
+              <td>290000</td>
+              <td>10</td>
+            </tr>
+
+            <tr data-testid="cm-product-row" data-sku="MS-02">
+              <td>
+                <figure>
+                  <img src="https://placehold.co/120x80?text=Razer+Viper"
+                       alt="Chuot Razer Viper"
+                       width="120"
+                       height="80">
+                  <figcaption>MS-02</figcaption>
+                </figure>
+              </td>
+              <td>MS-02</td>
+              <td>Razer Viper</td>
+              <td>Chuot</td>
+              <td>990000</td>
+              <td>4</td>
+            </tr>
+
+            <tr data-testid="cm-product-row" data-sku="MS-03">
+              <td>
+                <figure>
+                  <img src="https://placehold.co/120x80?text=Xiaomi+Silent"
+                       alt="Chuot Xiaomi Silent"
+                       width="120"
+                       height="80">
+                  <figcaption>MS-03</figcaption>
+                </figure>
+              </td>
+              <td>MS-03</td>
+              <td>Xiaomi Silent</td>
+              <td>Chuot</td>
+              <td>250000</td>
+              <td>8</td>
+            </tr>
+
+            <tr data-testid="cm-product-row" data-sku="MN-01">
+              <td>
+                <figure>
+                  <img src="https://placehold.co/120x80?text=Dell+24+inch"
+                       alt="Man hinh Dell 24 inch"
+                       width="120"
+                       height="80">
+                  <figcaption>MN-01</figcaption>
+                </figure>
+              </td>
+              <td>MN-01</td>
+              <td>Dell 24 inch</td>
+              <td>Man hinh</td>
+              <td>3200000</td>
+              <td>2</td>
+            </tr>
+
+            <tr data-testid="cm-product-row" data-sku="MN-02">
+              <td>
+                <figure>
+                  <img src="https://placehold.co/120x80?text=LG+UltraFine"
+                       alt="Man hinh LG UltraFine"
+                       width="120"
+                       height="80">
+                  <figcaption>MN-02</figcaption>
+                </figure>
+              </td>
+              <td>MN-02</td>
+              <td>LG UltraFine</td>
+              <td>Man hinh</td>
+              <td>8500000</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="inventory-box" data-testid="cm-inventory-total">
+        Tong gia tri kho = 41380000
+      </p>
+
+      <p>So san pham = 8</p>
+    </section>
+
+    <section id="about">
+      <h2>Gioi thieu</h2>
+      <p>CampusMart la trang danh muc san pham cong nghe danh cho sinh vien.</p>
+
+      <h3>Gui lien he</h3>
+      <form action="#" method="post">
+        <div>
+          <label for="contact-name">Ho ten</label>
+          <input id="contact-name" type="text" name="contact_name" required>
+        </div>
+
+        <div>
+          <label for="contact-email">Email</label>
+          <input id="contact-email" type="email" name="contact_email" required>
+        </div>
+
+        <div>
+          <label for="contact-content">Noi dung</label>
+          <textarea id="contact-content"
+                    name="contact_content"
+                    rows="4"
+                    required></textarea>
+        </div>
+
+        <button type="submit">Gui</button>
+      </form>
+    </section>
+
+    <section id="subscribe">
+      <h2>Dang ky nhan tin</h2>
+
+      <form data-testid="cm-subscribe-form" action="#" method="post">
+        <fieldset>
+          <legend>Dang ky nhan tin</legend>
+
+          <div>
+            <label for="name">Ho ten</label>
+            <input id="name"
+                   type="text"
+                   name="name"
+                   required
+                   minlength="2">
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input id="email"
+                   type="email"
+                   name="email"
+                   required>
+          </div>
+
+          <div>
+            <label for="category-id">Danh muc quan tam</label>
+            <select id="category-id"
+                    name="category_id"
+                    required>
+              <option value="">Chon danh muc</option>
+              <option value="1">Ban phim</option>
+              <option value="2">Chuot</option>
+              <option value="3">Man hinh</option>
+            </select>
+          </div>
+
+          <button type="submit">Dang ky</button>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#subscribe">Dang ky vao nhan tin</a>
+    <p>© 2026 CampusMart</p>
+  </footer>
+
+  <!-- CM_EXPECT product_count=8 category_count=3 inventory_value=41380000 form_count=2 figure_count=8 -->
+</body>
+</html>
